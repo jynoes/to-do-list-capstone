@@ -1,0 +1,31 @@
+
+
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style for the navbar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Style for the navbar links on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#check:checked + #taskLabel {
+    text-decoration: line-through;
+}
+
+.list-items {
+    list-style: none;
+}

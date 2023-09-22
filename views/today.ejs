@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs")  %>
+
+
+<h1><%= dateToday %></h1>
+
+<form action="/add" method="POST">
+    <input type="text" name="task" placeholder="Add Task">
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    <% if (tasks && tasks.length > 0) { %>
+    <% tasks.forEach(function(task) { %>
+        <li class="list-items">
+            <input type="checkbox" name="checkbox" id="check">
+            <label for="check" id="taskLabel"><%= task %></label>
+        </li>
+    <% }); %>
+    <% } else { %>
+        <li>No tasks yet.</li>
+    <% } %>
+</ul>
+
+
