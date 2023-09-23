@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs")  %>
+
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1>Work Tasks</h1>
+    </div>
+
+    <div class="card-body">
+        <div class="scrollable-content">
+            <ul class="task-list">
+                <% if (workTasks && workTasks.length > 0) { %>
+                    <% workTasks.forEach(function(task) { %>
+                        <li class="list-items">
+                            <div class="list">
+                                <div class="checkbox">
+                                    <input class="box" type="checkbox" name="checkbox" id="check">
+                                    <label class="task-label" for="check"><%= task %></label>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No tasks yet.</li>
+                <% } %>
+            </ul>        
+        </div>
+
+        <br>
+
+        <div class="add-task">
+            <form action="/work/add" method="POST">
+                <input class="textbox" type="text" name="workTask" placeholder=" Type task here">
+                <button class="btn btn-dark add-btn" type="submit">Add</button>
+            </form>
+        </div>
+
+        
+    </div>
+</div>
+<br>
+
+
+<%- include("partials/footer.ejs")  %>
+
+

@@ -1,24 +1,47 @@
 <%- include("partials/header.ejs")  %>
 
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1><%= dateToday %></h1>
+    </div>
 
-<h1><%= dateToday %></h1>
+    <div class="card-body">
+        <div class="scrollable-content">
 
-<form action="/add" method="POST">
-    <input type="text" name="task" placeholder="Add Task">
-    <button type="submit">Add</button>
-</form>
+            <ul class="task-list">
+                <% if (todayTasks && todayTasks.length > 0) { %>
+                    <% todayTasks.forEach(function(task) { %>
+                        <li class="list-items">
+                            <div class="list">
+                                <div class="checkbox">
+                                    <input class="box" type="checkbox" name="checkbox" id="check">
+                                    <label class="task-label" for="check"><%= task %></label>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No tasks yet.</li>
+                <% } %>
+            </ul>        
+        </div>
 
-<ul>
-    <% if (tasks && tasks.length > 0) { %>
-    <% tasks.forEach(function(task) { %>
-        <li class="list-items">
-            <input type="checkbox" name="checkbox" id="check">
-            <label for="check" id="taskLabel"><%= task %></label>
-        </li>
-    <% }); %>
-    <% } else { %>
-        <li>No tasks yet.</li>
-    <% } %>
-</ul>
+        <br>
+
+            <div class="add-task">
+                <form action="/today/add" method="POST">
+                    <input class="textbox" type="text" name="todayTask" placeholder=" Type task here">
+                    <button class="btn btn-dark add-btn" type="submit">Add</button>
+                </form>
+            </div>
+
+        
+    </div>
+</div>
+<br>
+
+
+<%- include("partials/footer.ejs")  %>
 
 

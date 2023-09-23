@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.render("today.ejs", {
         dateToday: today,
-        tasks: tasks,
+        todayTasks: todayTasks,
+        year: year,
     })
     
 })
@@ -22,23 +23,60 @@ function getCurrentDate() {
     return formattedDate;
   }
 
+let year = new Date().getFullYear();
+
 const today = getCurrentDate();
 
-const tasks = [];
+const todayTasks = [];
 
-app.post("/add", (req, res) => {
-    const taskAdd = req.body["task"];
+app.post("/today/add", (req, res) => {
+
+    const taskAdd = req.body["todayTask"];
 
     if (taskAdd) {
-        tasks.push(taskAdd);
+        todayTasks.push(taskAdd);
     }
 
     res.render("today.ejs", {
         dateToday: today,
-        tasks: tasks,
-
+        todayTasks: todayTasks,
+        year: year,
     })
     
+})
+
+const workTasks = [];
+
+app.post("/work/add", (req, res) => {
+
+    const taskAdd = req.body["workTask"];
+
+    if (taskAdd) {
+        workTasks.push(taskAdd);
+    }
+
+    res.render("work.ejs", {
+        dateToday: today,
+        workTasks: workTasks,
+        year: year,
+    })
+    
+})
+
+app.get("/work", (req, res) => {
+    res.render("work.ejs", {
+        dateToday: today,
+        workTasks: workTasks,
+        year: year,
+    })
+})
+
+app.get("/today", (req, res) => {
+    res.render("today.ejs", {
+        dateToday: today,
+        todayTasks: todayTasks,
+        year: year,
+    })
 })
 
 
