@@ -64,7 +64,6 @@ body {
 }
 
 .task-label {
-    text-decoration: none;
     margin: 8px;
 }
 
@@ -72,7 +71,11 @@ body {
     margin-right: 12px;
 }
 
-.box:checked + .task-label {
+/* .box:checked + .task-label {
+    text-decoration: line-through;
+} */
+
+input.box:checked, label {
     text-decoration: line-through;
 }
 
