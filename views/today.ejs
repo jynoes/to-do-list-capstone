@@ -1,47 +1,47 @@
-<%- include("partials/header.ejs")  %>
+<%- include("partials/header.ejs") %>
 
-<br>
+<br />
 <div class="card">
-    <div class="card-header">
-        <h1><%= dateToday %></h1>
+  <div class="card-header">
+    <h1><%= dateToday %></h1>
+  </div>
+
+  <div class="card-body">
+    <div class="scrollable-content">
+      <ul class="task-list">
+        <% if (todayTasks && todayTasks.length > 0) { %> <%
+        todayTasks.forEach(function(task) { %>
+        <li class="list-items">
+          <section>
+            <article>
+              <div class="checkbox">
+                <input class="box" type="checkbox" name="checkbox" id="check" >
+                <label class="task-label" for="box"><%= task %></label>
+              </div>
+            </article>
+          </section>
+        </li>
+        <% }); %> <% } else { %>
+        <li>No tasks yet.</li>
+        <% } %>
+      </ul>
     </div>
 
-    <div class="card-body">
-        <div class="scrollable-content">
+    <br />
 
-            <ul class="task-list">
-                <% if (todayTasks && todayTasks.length > 0) { %>
-                    <% todayTasks.forEach(function(task) { %>
-                        <li class="list-items">
-                            <div class="list">
-                                <div class="checkbox">
-                                    <input class="box" type="checkbox" name="checkbox" id="check">
-                                    <label class="task-label" for="check"><%= task %></label>
-                                </div>
-                            </div>
-                        </li>
-                    <% }); %>
-                <% } else { %>
-                    <li>No tasks yet.</li>
-                <% } %>
-            </ul>        
-        </div>
-
-        <br>
-
-            <div class="add-task">
-                <form action="/today/add" method="POST">
-                    <input class="textbox" type="text" name="todayTask" placeholder=" Type task here">
-                    <button class="btn btn-dark add-btn" type="submit">Add</button>
-                </form>
-            </div>
-
-        
+    <div class="add-task">
+      <form action="/today/add" method="POST">
+        <input
+          class="textbox"
+          type="text"
+          name="todayTask"
+          placeholder=" Type task here"
+        />
+        <button class="btn btn-dark add-btn" type="submit">Add</button>
+      </form>
     </div>
+  </div>
 </div>
-<br>
+<br />
 
-
-<%- include("partials/footer.ejs")  %>
-
-
+<%- include("partials/footer.ejs") %>
